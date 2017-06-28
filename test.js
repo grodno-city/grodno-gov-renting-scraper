@@ -8,6 +8,7 @@ const parsedData = parse(fixtureBody) // premisesByOrganization
 // Test constants
 // Depends on fixture
 const ORGANIZATIONS_COUNT = 13
+const FIRST_ORGANIZATION_NAME = 'Унитарное жилищное ремонтно-эксплуатационное предприятие Ленинского района'
 const FIRST_ORGANIZATION_PREMISES_COUNT = 65
 
 const premiseFixture = {
@@ -20,6 +21,10 @@ const premiseFixture = {
 
 test('should return correct organizations count', t => {
   t.is(parsedData.length, ORGANIZATIONS_COUNT, `Organizations count is not equal ${ORGANIZATIONS_COUNT}`)
+})
+
+test('first organization name should be correct', t => {
+  t.is(parsedData[0].name, FIRST_ORGANIZATION_NAME, `First organization should has next name: "${FIRST_ORGANIZATION_NAME}"`)
 })
 
 test('should return correct premises count', t => {
