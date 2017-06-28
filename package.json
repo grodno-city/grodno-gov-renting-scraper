@@ -1,0 +1,28 @@
+{
+  "name": "@grodno-city/grodno-gov-renting-scraper",
+  "version": "0.0.1",
+  "description": "Scrap premises rented by Grodno government",
+  "main": "index.js",
+  "repository": "grodno-city/grodno-gov-renting-scraper",
+  "author": "Dima Pavlovsky",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "utils.js"
+  ],
+  "scripts": {
+    "test": "yarn lint && ava -v",
+    "create-fixture": "curl http://grodno.gov.by/ru/main.aspx?guid=7101 -o fixture.html",
+    "lint": "standard --verbose | snazzy"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
+    "lodash.isnumber": "^3.0.3",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
+  }
+}
