@@ -9,7 +9,7 @@ const getAreasArrayFromNode = node => {
     return []
   }
 
-  const cleanAreasText = getTextFromNode(node) // xxx
+  const cleanAreasText = getTextFromNode(node)
   return cleanAreasText.split(';').reduce((acc, area) => {
     const cleanAreaText = area.trim().replace(',', '.')
     const parsedArea = parseFloat(cleanAreaText)
