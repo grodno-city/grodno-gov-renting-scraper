@@ -10,7 +10,7 @@ const requestRawData = async () => {
   }
 
   const body = await rp(requestOptions)
-  return body
+  return body.toString()
 }
 
 const parse = (rawText) => {
