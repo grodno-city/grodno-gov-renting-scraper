@@ -45,6 +45,14 @@ Provided result has "premises by organization" format, so it will something like
 ]
 ```
 
+Areas array can contains a numbers or an objects:
+```js
+  areas: [12, 50, {
+    apartmentNumber: '24',
+    area: '44.4'
+  }]
+```
+
 ## Api
   - extract()<Promise> - request and parse data
   - parse(rawText: String)<Object> - parse passed string
