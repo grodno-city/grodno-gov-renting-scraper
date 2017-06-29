@@ -18,7 +18,7 @@ npm install --save @grodno-city/grodno-gov-renting-scraper
 const { extract } = require('@grodno-city/grodno-gov-renting-scraper')
 
 const run = async () => {
-  const result = extract()
+  const result = await extract()
   console.log(result)
 }
 
