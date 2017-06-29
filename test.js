@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
 import test from 'ava'
-import { parse } from './'
+import { parse, extract } from './'
 import { getAreasArrayFromNode } from './utils'
 
 const fixtureBody = readFileSync('./fixture.html').toString()
@@ -28,10 +28,17 @@ const specificAppartmentFormatNodeFixture = {
 }
 
 const specificAppartmentFormatResultFixture = [{
-  apartmentNumber: '24', area: '44.4'
+  apartmentNumber: '24',
+  area: '44.4'
 }, {
-  apartmentNumber: '37', area: '44.3'
+  apartmentNumber: '37',
+  area: '44.3'
 }]
+
+test('should do request without error (iternet connection required)', async t => {
+  await extract()
+  t.pass()
+})
 
 test('should return correct organizations count', t => {
   t.is(parsedData.length, ORGANIZATIONS_COUNT, `Organizations count is not equal ${ORGANIZATIONS_COUNT}`)
