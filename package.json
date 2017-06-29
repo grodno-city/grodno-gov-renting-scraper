@@ -1,6 +1,6 @@
 {
   "name": "@grodno-city/grodno-gov-renting-scraper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scrap premises rented by Grodno government",
   "main": "index.js",
   "repository": "grodno-city/grodno-gov-renting-scraper",
