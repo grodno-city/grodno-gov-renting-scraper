@@ -8,7 +8,8 @@
   "license": "MIT",
   "files": [
     "index.js",
-    "utils.js"
+    "utils.js",
+    "enhancers.js"
   ],
   "scripts": {
     "test": "yarn lint && ava -v",
