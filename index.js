@@ -1,6 +1,7 @@
 const rp = require('request-promise')
 const { load } = require('cheerio')
-const { getTextFromNode, getAreasArrayFromNode } = require('./utils')
+const { getTextFromNode } = require('./utils')
+const enhancers = require('./enhancers')
 
 const URL = 'http://grodno.gov.by/ru/main.aspx?guid=7101'
 
@@ -40,7 +41,7 @@ const parse = (rawText) => {
     // Mapping
     const address = getTextFromNode($(cells[0]))
     const description = getTextFromNode($(cells[1]))
-    const areas = getAreasArrayFromNode($(cells[2]))
+    const areas = getTextFromNode($(cells[2]))
     const appointment = getTextFromNode($(cells[3]))
     const contact = getTextFromNode($(cells[4]))
 
@@ -71,5 +72,6 @@ const extract = async () => {
 module.exports = {
   extract,
   parse,
-  requestRawData
+  requestRawData,
+  enhancers
 }

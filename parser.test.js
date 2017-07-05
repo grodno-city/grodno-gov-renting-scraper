@@ -1,7 +1,6 @@
 import { readFileSync } from 'fs'
 import test from 'ava'
 import { parse, extract } from './'
-import { getAreasArrayFromNode } from './utils'
 
 const fixtureBody = readFileSync('./fixture.html').toString()
 const parsedData = parse(fixtureBody) // premisesByOrganization
@@ -15,25 +14,10 @@ const FIRST_ORGANIZATION_PREMISES_COUNT = 65
 const premiseFixture = {
   address: 'ул. Академическая, 14',
   description: 'Нежилое изолированное помещение, на 1,2 этаже здания.',
-  areas: [ 50.82, 39, 34.86, 30.1, 14.4 ],
+  areas: '50,82; 39.0; 34.86;30.1; 14.4', // [ 50.82, 39, 34.86, 30.1, 14.4 ]
   appointment: 'офис, оказание услуг',
   contact: '43-04-47'
 }
-
-const specificAppartmentFormatNodeFixture = {
-  text: () => `
-          кв.№24-44,4;
-          кв.№37-44,3
-  `
-}
-
-const specificAppartmentFormatResultFixture = [{
-  apartmentNumber: '24',
-  area: '44.4'
-}, {
-  apartmentNumber: '37',
-  area: '44.3'
-}]
 
 test('should do request without error (iternet connection required)', async t => {
   await extract()
@@ -59,9 +43,4 @@ test('should return correct premises count', t => {
 test('should return correct premise', t => {
   const premise = parsedData[0].premises[2]
   t.deepEqual(premise, premiseFixture, 'Premise is not equal fixture')
-})
-
-test('should parse specific appartment format (getAreasArrayFromNode)', t => {
-  const result = getAreasArrayFromNode(specificAppartmentFormatNodeFixture)
-  t.deepEqual(result, specificAppartmentFormatResultFixture, 'specific appartment number format is not parsed correct')
 })
