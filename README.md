@@ -35,7 +35,7 @@ Provided result has "premises by organization" format, so it will something like
       {
         address: 'ул. Академическая, 14',
         description: 'Нежилое изолированное помещение, на 1,2 этаже здания.',
-        areas: [ 50.82, 39, 34.86, 30.1, 14.4 ],
+        areas: '50,82; 39.0; 34.86;30.1; 14.4',
         appointment: 'офис, оказание услуг',
         contact: '43-04-47'
       }
@@ -43,6 +43,29 @@ Provided result has "premises by organization" format, so it will something like
     ]
   }
 ]
+```
+
+## Enhancers
+
+Enhancers can transform specific fields to machine-readable format
+
+### areaEnhancer
+
+```js
+const { extract, enhancers } = require('@grodno-city/grodno-gov-renting-scraper')
+const { areaEnhancer } = enhancers
+
+const run = async () => {
+  const result = await extract()
+  result.forEach(organization => {
+    organization.premises.forEach(premise => {
+      const enhancedAddress = areaEnhancer(premise.areas)
+      console.log(enhancedAddress)
+    })
+  })
+}
+
+run()
 ```
 
 Areas array can contains a numbers or an objects:
