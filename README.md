@@ -51,6 +51,8 @@ Enhancers can transform specific fields to machine-readable format
 
 ### areaEnhancer
 
+Transfrom `areas` field to array of numbers or objects
+
 ```js
 const { extract, enhancers } = require('@grodno-city/grodno-gov-renting-scraper')
 const { areaEnhancer } = enhancers
